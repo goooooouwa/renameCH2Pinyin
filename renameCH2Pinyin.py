@@ -3,11 +3,11 @@
 import sys
 import os
 import re
- 
+
 # File uni2pinyin is a mapping from hex to Pinyin with a tone number
 f = open('./uni2pinyin.txt')
 wf = f.read() # read the whole mapping file
- 
+
 os.chdir(sys.argv[1]) # to rename all files in sub folder 'voc'
 myulist = os.listdir(u'.') # read all file names in unicode mode
 for x in myulist: # each file name
@@ -18,7 +18,7 @@ for x in myulist: # each file name
                                               # to uppercase
             p = re.compile(hexCH+'\t([a-z]+)[\d]*') # define the match pattern
             mp = p.search(wf)
-            filenamePY+=mp.group(1).title() # get the pinyin without the tone
+            filenamePY+=mp.group(1).title()+' ' # get the pinyin without the tone
                                             # number and capitalize it
         else:
             filenamePY+=y
